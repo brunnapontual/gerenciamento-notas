@@ -1,0 +1,54 @@
+EVIDENCIAS TDD - Sistema de Gerenciamento de Notas
+===================================================
+
+O que e TDD:
+  RED    -> escreve o teste antes de implementar (teste falha)
+  GREEN  -> implementa o minimo para o teste passar
+  REFACTOR -> melhora o codigo sem quebrar os testes
+
+---
+
+1 - Criacao do Aluno
+RED:    ImportError: cannot import name 'Aluno' from 'aluno'
+GREEN:  classe Aluno criada com nome e notas
+Result: 1 passed in 0.00s
+
+2 - Adicionar Nota
+RED:    AttributeError: 'Aluno' object has no attribute 'adicionar_nota'
+GREEN:  metodo adicionar_nota adicionado
+Result: 2 passed in 0.00s
+
+3 - Validacao de Notas Invalidas
+RED:    DID NOT RAISE ValueError (nota -1 e nota 11 foram aceitas)
+GREEN:  validacao adicionada no metodo adicionar_nota
+Result: 4 passed in 0.00s
+
+4 - Calculo da Media
+RED:    AttributeError: 'Aluno' object has no attribute 'calcular_media'
+GREEN:  metodo calcular_media criado (retorna 0 se sem notas)
+Result: 6 passed in 0.00s
+
+5 - Verificacao da Situacao
+RED:    AttributeError: 'Aluno' object has no attribute 'verificar_situacao'
+GREEN:  metodo verificar_situacao criado com as tres situacoes
+Result: 9 passed in 0.01s
+
+6 - Valores de Fronteira
+RED:    comportamentos nao tinham testes documentando os limites
+GREEN:  testes passaram sem alterar o codigo (implementacao ja cobria os casos)
+Testes: media exatamente 7 -> Aprovado, media exatamente 5 -> Recuperacao,
+        nota 0 valida, nota 10 valida
+Result: 13 passed in 0.01s
+
+---
+
+Resultado final:
+
+  $ pytest -v
+  13 passed in 0.01s
+
+  $ pytest --html=report.html
+  13 passed in 0.01s
+  Generated html report: report.html
+
+O relatorio HTML foi utilizado como evidencia da execucao correta dos testes.
